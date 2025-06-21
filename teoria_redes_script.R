@@ -174,9 +174,7 @@ mio.grid <- left_join(mio.grid, cell_communities, by = "cell_id")
 # Visualizar unidades biogeográficas
 mapa_units<-ggplot() +
   geom_sf(data = miocene_poly, fill = "grey70", col = "black", lwd = 0.2) +
-  #geom_sf(data = mio.buff, fill = NA, col = "green", lwd = 0.5, alpha = 0.3) +
   geom_sf(data = mio.grid, aes(fill = as.factor(community)), alpha = 0.5) +
-  #geom_point(data = caballo_miocene, aes(x = paleolong, y = paleolat), col = "#8B2323") +
   scale_fill_viridis_d(name = "Unidad Biogeográfica") +
   labs(x = "", y = "") +
   ggtitle("Unidades biogeográficas de los caballos del Mioceno en 2D (infomap)") +
@@ -190,7 +188,7 @@ mapa_units<-ggplot() +
   annotation_scale(location = "bl")
 ggsave(plot = mapa_units, filename = glue('miocene_units.jpg'), units = 'in', width = 10, height = 7, dpi = 300)
 
-
+mapa_units
 ############# tambien podemos plotear la red biogeografica ##########
 plot(g,
      vertex.color=V(g)$community,
